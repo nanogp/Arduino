@@ -8,29 +8,30 @@ Se agrega estadoAnteriorBoton sino no detecta el
 cambio del boton cuandose lo mantiene apretado y titila el led
 */
 
-int led = 12;
-int boton = 4;
+#define LED 12
+#define BOTON 4
+
 int estadoLed = 0;
 int estadoAnteriorBoton = 0;
 int estadoBoton;
 
 void setup()
 {
-  pinMode(boton, INPUT);
-  pinMode(led, OUTPUT);
-  digitalWrite(led, LOW);
+  pinMode(BOTON, INPUT);
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED, LOW);
 }
 
 void loop()
 {
-  estadoBoton = !digitalRead(boton);
+  estadoBoton = !digitalRead(BOTON);
   
   if(estadoAnteriorBoton != estadoBoton)
   {
     if(estadoBoton == HIGH)
     {
       estadoLed = 1 - estadoLed;
-      digitalWrite(led, estadoLed);
+      digitalWrite(LED, estadoLed);
       delay(250);
     }
   	estadoAnteriorBoton = estadoBoton;
